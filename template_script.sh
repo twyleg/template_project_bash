@@ -14,3 +14,9 @@ set -e
 
 # Get the dir of the currently running scripts
 SCRIPT_DIR="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+
+# Check if we're running as root
+if [ "$(id -u)" -ne 0 ]; then
+	echo "Please run as root"
+	exit -1
+fi
